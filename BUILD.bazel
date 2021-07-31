@@ -1,9 +1,19 @@
+# gazelle:prefix github.com/tellett/gocode
+
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 load("@io_bazel_rules_go//go:def.bzl", "nogo")
 
-# gazelle:prefix github.com/tellett/gocode
-gazelle(name = "gazelle")
+gazelle(
+    name = "gazelle",
+    command = "fix",
+)
+
+gazelle(
+    name = "gazelle-diff",
+    command = "fix",
+    mode = "diff",
+)
 
 buildifier(name = "buildifier")
 
