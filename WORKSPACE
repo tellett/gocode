@@ -42,6 +42,28 @@ http_archive(
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
+# See https://github.com/bazelbuild/rules_docker/issues/1847
+
+go_repository(
+    name = "com_github_vdemeester_k8s_pkg_credentialprovider",
+    importpath = "github.com/vdemeester/k8s-pkg-credentialprovider",
+    sum = "h1:7Ajl3rjeYoB5V47jPknnLbyxYlhMXTTJiQsye5aT7f0=",
+    version = "v1.21.0-1",
+)
+
+go_repository(
+    name = "org_golang_x_tools",
+    build_file_generation = "on",
+    build_file_proto_mode = "disable",
+    importpath = "golang.org/x/tools",
+    sum = "h1:po9/4sTYwZU9lPhi1tOrb4hCv3qrhiQ77LZfGa2OjwY=",
+    version = "v0.1.0",
+    build_extra_args = [
+        "-exclude=**/testdata",
+        "-exclude=go/packages/packagestest",
+    ],
+)
+
 go_rules_dependencies()
 
 go_register_toolchains(
@@ -65,24 +87,6 @@ load(
 
 _go_image_repos()
 
-# See https://github.com/bazelbuild/rules_docker/issues/1847
-
-go_repository(
-    name = "com_github_vdemeester_k8s_pkg_credentialprovider",
-    importpath = "github.com/vdemeester/k8s-pkg-credentialprovider",
-    sum = "h1:7Ajl3rjeYoB5V47jPknnLbyxYlhMXTTJiQsye5aT7f0=",
-    version = "v1.21.0-1",
-)
-
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
-
-go_repository(
-    name = "org_golang_x_tools",
-    build_file_generation = "on",
-    build_file_proto_mode = "disable",
-    importpath = "golang.org/x/tools",
-    sum = "h1:po9/4sTYwZU9lPhi1tOrb4hCv3qrhiQ77LZfGa2OjwY=",
-    version = "v0.1.0",
-)
