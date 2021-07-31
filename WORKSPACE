@@ -39,12 +39,12 @@ http_archive(
     ],
 )
 
-load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
+load("@io_bazel_rules_go//go:deps.bzl", "go_rules_dependencies", "go_register_toolchains")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies", "go_repository")
 
 go_rules_dependencies()
 
-go_register_toolchains(version = "1.16.5")
+go_register_toolchains(nogo = "@//:nogo_vet", version = "1.16.5")
 
 gazelle_dependencies()
 
@@ -74,3 +74,12 @@ go_repository(
 load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
 
 protobuf_deps()
+
+go_repository(
+    name = "org_golang_x_tools",
+    build_file_generation = "on",
+    build_file_proto_mode = "disable",
+    importpath = "golang.org/x/tools",
+    sum = "h1:po9/4sTYwZU9lPhi1tOrb4hCv3qrhiQ77LZfGa2OjwY=",
+    version = "v0.1.0",
+)
