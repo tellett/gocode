@@ -1,9 +1,9 @@
 load("@io_bazel_rules_go//go:def.bzl", "go_library")
 
 go_library(
-    name = "health",
-    srcs = ["health.go"],
-    importpath = "github.com/tellett/gocode/pkg/examples/hello/handlers/health",
+    name = "terminator",
+    srcs = ["terminator.go"],
+    importpath = "github.com/tellett/gocode/pkg/net/httpserver/handlers/terminator",
     visibility = ["//visibility:public"],
     deps = [
         "@org_uber_go_fx//:fx",

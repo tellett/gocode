@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "httpserver",
+    srcs = ["httpserver.go"],
+    importpath = "github.com/tellett/gocode/pkg/net/httpserver",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/logging/loggerfx",
+        "//pkg/net/httpserver/handlers/health",
+        "//pkg/net/httpserver/handlers/terminator",
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+    ],
+)
