@@ -27,8 +27,8 @@ func New(s *http.ServeMux, l *zap.SugaredLogger) *Handler {
 
 // RegisterRoutes for all http endpoints
 func (h *Handler) registerRoutes() {
-	h.logger.Info("Registering handler on /health")
-	h.mux.HandleFunc("/health", h.HealthCheck)
+	h.logger.Info("Registering handler on /healthz")
+	h.mux.HandleFunc("/healthz", h.HealthCheck)
 }
 
 func (h *Handler) HealthCheck(w http.ResponseWriter, r *http.Request) {
