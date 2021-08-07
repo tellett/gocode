@@ -1,0 +1,16 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "hello",
+    srcs = ["server.go"],
+    importpath = "github.com/tellett/gocode/pkg/examples/hello",
+    visibility = ["//visibility:public"],
+    deps = [
+        "//pkg/examples/hello/handlers/greeter",
+        "//pkg/examples/hello/handlers/health",
+        "//pkg/examples/hello/handlers/terminator",
+        "//pkg/logging/loggerfx",
+        "@org_uber_go_fx//:fx",
+        "@org_uber_go_zap//:zap",
+    ],
+)

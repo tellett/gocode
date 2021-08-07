@@ -6,6 +6,10 @@ go_library(
     srcs = ["main.go"],
     importpath = "github.com/tellett/gocode/cmd/hello",
     visibility = ["//visibility:private"],
+    deps = [
+        "//pkg/examples/hello",
+        "@org_uber_go_fx//:fx",
+    ],
 )
 
 go_binary(

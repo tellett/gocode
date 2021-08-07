@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"github.com/tellett/gocode/pkg/examples/hello"
+	"go.uber.org/fx"
+)
+
+var Module = fx.Options(
+	hello.Module,
+)
 
 func main() {
-    fmt.Println("Hello, World!")
+	fx.New(Module).Run()
 }
