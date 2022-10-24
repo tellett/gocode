@@ -21,4 +21,8 @@ go_binary(
 go_image(
     name = "hello_world_docker",
     binary = ":hello",
+    embed = [":go_default_library"],
+    goarch = "amd64",
+    goos = "linux",
+    visibility = ["//visibility:public"],
 )

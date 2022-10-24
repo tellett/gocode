@@ -70,6 +70,11 @@
       "external/": "external tools don't pass vet"
     }
   },
+  "shadow": {
+    "exclude_files": {
+      "external/": "external tools don't pass vet"
+    }
+  },
   "shift": {
     "exclude_files": {
       "external/": "external tools don't pass vet"
